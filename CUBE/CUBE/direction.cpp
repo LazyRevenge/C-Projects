@@ -10,5 +10,6 @@ Direction parseDirection(const std::string& dirStr) {
     if (str == "right") return Direction::RIGHT;
     if (str == "left") return Direction::LEFT;
 
-    throw std::invalid_argument("Неправильное направление: " + dirStr);
+    throw std::invalid_argument("Wrong way: " + dirStr);
+
 }
