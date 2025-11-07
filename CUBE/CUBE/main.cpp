@@ -3,31 +3,31 @@
 #include "direction.h"   
 
 void printHelp() {
-    std::cout << "Êîìàíäû:\n";
-    std::cout << "  forward (âïåðåä) - äâèãàòü âïåðåä\n";
-    std::cout << "  backward (íàçàä) - äâèãàòü íàçàä\n";
-    std::cout << "  right (âïðàâî) - äâèãàòü íàïðàâî\n";
-    std::cout << "  left (âëåâî) - äâèãàòü íàëåâî\n";
-    std::cout << "  print - ïîêàçàòü òåêóùóþ ðàñêëàäêó êóáèêó\n";
-    std::cout << "  exit - âûõîä\n";
+    std::cout << "ÃŠÃ®Ã¬Ã Ã­Ã¤Ã»:\n";
+    std::cout << "  forward (Ã¢Ã¯Ã¥Ã°Ã¥Ã¤) - Ã¤Ã¢Ã¨Ã£Ã Ã²Ã¼ Ã¢Ã¯Ã¥Ã°Ã¥Ã¤\n";
+    std::cout << "  backward (Ã­Ã Ã§Ã Ã¤) - Ã¤Ã¢Ã¨Ã£Ã Ã²Ã¼ Ã­Ã Ã§Ã Ã¤\n";
+    std::cout << "  right (Ã¢Ã¯Ã°Ã Ã¢Ã®) - Ã¤Ã¢Ã¨Ã£Ã Ã²Ã¼ Ã­Ã Ã¯Ã°Ã Ã¢Ã®\n";
+    std::cout << "  left (Ã¢Ã«Ã¥Ã¢Ã®) - Ã¤Ã¢Ã¨Ã£Ã Ã²Ã¼ Ã­Ã Ã«Ã¥Ã¢Ã®\n";
+    std::cout << "  print - Ã¯Ã®ÃªÃ Ã§Ã Ã²Ã¼ Ã²Ã¥ÃªÃ³Ã¹Ã³Ã¾ Ã°Ã Ã±ÃªÃ«Ã Ã¤ÃªÃ³ ÃªÃ³Ã¡Ã¨ÃªÃ³\n";
+    std::cout << "  exit - Ã¢Ã»ÃµÃ®Ã¤\n";
 }
 
 int main() {
     setlocale(LC_ALL, "rus");
     try {
         int top, front, right;
-        std::cout << "Ââåäèòå ñòîðîíû êóáà (âåðõíÿÿ ëèöåâàÿ ïðàâàÿ): ";
+        std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã±Ã²Ã®Ã°Ã®Ã­Ã» ÃªÃ³Ã¡Ã  (Ã¢Ã¥Ã°ÃµÃ­Ã¿Ã¿ Ã«Ã¨Ã¶Ã¥Ã¢Ã Ã¿ Ã¯Ã°Ã Ã¢Ã Ã¿): ";
         std::cin >> top >> front >> right;
 
         Dice dice(top, front, right);
-        std::cout << "Êóáèê ñîçäàí\n";
+        std::cout << "ÃŠÃ³Ã¡Ã¨Ãª Ã±Ã®Ã§Ã¤Ã Ã­\n";
         dice.printLayout();
 
         printHelp();
 
         std::string command;
         while (true) {
-            std::cout << "\nÂâåäèòå êîìàíäó: ";
+            std::cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ÃªÃ®Ã¬Ã Ã­Ã¤Ã³: ";
             std::cin >> command;
 
             if (command == "exit" || command == "quit") {
@@ -40,19 +40,20 @@ int main() {
                 try {
                     Direction dir = parseDirection(command);
                     dice.move(dir);
-                    std::cout << "Ïåðåäâèíóò " << command << ". Êóáèê ïåðåâåðíóò.\n";
+                    std::cout << "ÃÃ¥Ã°Ã¥Ã¤Ã¢Ã¨Ã­Ã³Ã² " << command << ". ÃŠÃ³Ã¡Ã¨Ãª Ã¯Ã¥Ã°Ã¥Ã¢Ã¥Ã°Ã­Ã³Ã².\n";
                 }
                 catch (const std::invalid_argument& e) {
-                    std::cout << "Îøèáêà: " << e.what() << "\n";
-                    std::cout << "Ââåäèòå 'help' äëÿ îòîáðàæåíèÿ ñïðàâêè.\n";
+                    std::cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ : " << e.what() << "\n";
+                    std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ 'help' Ã¤Ã«Ã¿ Ã®Ã²Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¿ Ã±Ã¯Ã°Ã Ã¢ÃªÃ¨.\n";
                 }
             }
         }
     }
     catch (const std::exception& e) {
-        std::cerr << "Îøèáêà: " << e.what() << "\n";
+        std::cerr << "ÃŽÃ¸Ã¨Ã¡ÃªÃ : " << e.what() << "\n";
         return 1;
     }
 
     return 0;
+
 }
