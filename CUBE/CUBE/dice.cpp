@@ -5,13 +5,13 @@
 
 Dice::Dice(int top, int front, int right) {
     if (top < 1 || top > 6 || front < 1 || front > 6 || right < 1 || right > 6) {
-        throw std::invalid_argument("Значения граней должны быть от 1 до 6");
+        throw std::invalid_argument("The face values вЂ‹вЂ‹must be between 1 and 6.");
     }
     if (top + front == 7 || top + right == 7 || front + right == 7) {
-        throw std::invalid_argument("Сумма противополжных граней должна равняться 7");
+        throw std::invalid_argument("The sum of opposite faces must be equal to 7");
     }
     if (top == front || top == right || front == right) {
-        throw std::invalid_argument("Значения граней не могут совпадать");
+        throw std::invalid_argument("The values вЂ‹вЂ‹of the edges cannot match");
     }
 
     initializeFaces(top, front, right);
@@ -68,7 +68,7 @@ void Dice::rotate(Direction direction) {
 }
 
 void Dice::printLayout() const {
-    std::cout << "Текущая раскладка кубика:\n";
+    std::cout << "Г’ГҐГЄГіГ№Г Гї Г°Г Г±ГЄГ«Г Г¤ГЄГ  ГЄГіГЎГЁГЄГ :\n";
     std::cout << std::setw(10) << " " << std::setw(5) << faces.at("back") << "\n";
     std::cout << std::setw(10) << " " << "  -----\n";
     std::cout << std::setw(9) << faces.at("left") << "  |" << std::setw(3) << faces.at("top") << "  |  " << faces.at("right") << "\n";
@@ -77,4 +77,5 @@ void Dice::printLayout() const {
     std::cout << std::setw(10) << " " << "  -----\n";
     std::cout << std::setw(10) << " " << std::setw(5) << faces.at("bottom") << "\n";
   
+
 }
